@@ -1,5 +1,5 @@
 import * as bcrypt from "bcryptjs";
-import * as yup from "yup";
+// import * as yup from "yup";
 
 import { MutationResolvers } from "../../../types";
 import { User } from "../../../entity/User";
