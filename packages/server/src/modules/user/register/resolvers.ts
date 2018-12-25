@@ -1,15 +1,21 @@
 import * as bcrypt from "bcryptjs";
-// import * as yup from "yup";
-
 import { MutationResolvers } from "../../../types";
 import { User } from "../../../entity/User";
+import { registerSchema } from "@ssr/common";
+import { formatYupError } from "../../../utils/formatYupError";
 
 export const resolvers: MutationResolvers.Resolvers = {
-  register: async (
-    _,
-    { input: { username, firstName, lastName, email, password } }
-  ) => {
+  register: async (_, { input }) => {
+    const { username, firstName, lastName, email, password } = input;
     const hashedPassword = await bcrypt.hash(password, 10);
+
+    try {
+      await registerSchema.validate(input, { abortEarly: false });
+    } catch (err) {
+      return {
+        errors: formatYupError(err)
+      };
+    }
 
     try {
       await User.create({
