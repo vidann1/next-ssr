@@ -229,10 +229,10 @@
     "@types/connect" "*"
     "@types/node" "*"
 
-"@types/connect-redis@^0.0.7":
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/@types/connect-redis/-/connect-redis-0.0.7.tgz#97948bc727d29e5413d1ebc6be7aa26df86bca7e"
-  integrity sha512-ui1DPnJxqgBhqPj0XTVyPkzffEX9DIGkb2nT2mzZ0OlsKn/u9BvRvKmjpi4Vydf2uw3z/D4UmMH4KMkilySqvw==
+"@types/connect-redis@^0.0.8":
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/@types/connect-redis/-/connect-redis-0.0.8.tgz#5dfec54b1027cb2ec33a78e5de319fc9227528d2"
+  integrity sha512-zqMHgRiBxSqj3vpz/S7kR4GhJHo5atag/s7i/GFvZte7SsOxkU8OWK/BcysWS4M7XL7koe4+u4lGjvx7Yir9EQ==
   dependencies:
     "@types/express" "*"
     "@types/express-session" "*"
@@ -2768,7 +2768,7 @@ invert-kv@^1.0.0:
   resolved "https://registry.yarnpkg.com/invert-kv/-/invert-kv-1.0.0.tgz#104a8e4aaca6d3d8cd157a8ef8bfab2d7a3ffdb6"
   integrity sha1-EEqOSqym09jNFXqO+L+rLXo//bY=
 
-ioredis@^4.2.0:
+ioredis@^4.3.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/ioredis/-/ioredis-4.3.0.tgz#a92850dd8794eaee4f38a265c830ca823a09d345"
   integrity sha512-TwTp93UDKlKVQeg9ThuavNh4Vs31JTlqn+cI/J6z21OtfghyJm5I349ZlsKobOeEyS4INITMLQ1fhR7xwf9Fxg==
