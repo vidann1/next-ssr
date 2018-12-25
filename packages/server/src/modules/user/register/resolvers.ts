@@ -27,7 +27,6 @@ export const resolvers: MutationResolvers.Resolvers = {
       }).save();
     } catch (err) {
       console.log(err);
-      /*
       const { detail } = err;
       if (detail.includes("already exists.")) {
         if (detail.includes("email")) {
@@ -48,9 +47,26 @@ export const resolvers: MutationResolvers.Resolvers = {
               }
             ]
           };
+        } else if (detail.includes("firstName")) {
+          return {
+            errors: [
+              {
+                path: "firstName",
+                message: "already taken"
+              }
+            ]
+          };
+        } else if (detail.includes("lastName")) {
+          return {
+            errors: [
+              {
+                path: "lastName",
+                message: "already taken"
+              }
+            ]
+          };
         }
-	  }
-	  */
+      }
     }
 
     return {

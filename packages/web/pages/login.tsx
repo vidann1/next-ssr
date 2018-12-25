@@ -6,17 +6,11 @@ import { InputField } from "../components/formik-fields/InputField";
 import { ErrorMessage } from "../components/ErrorMessage";
 import { normalizeErrors } from "../utils/normalizeErrors";
 import { Mutation } from "react-apollo";
-import { registerMutation } from "../graphql/user/mutation/register";
-import {
-  RegisterMutation,
-  RegisterMutationVariables
-} from "../lib/schema-types";
+import { LoginMutation, LoginMutationVariables } from "../lib/schema-types";
+import { loginMutation } from "../graphql/user/mutation/login";
 
 interface FormValues {
-  username: string;
-  firstName: string;
-  lastName: string;
-  email: string;
+  usernameOrEmail: string;
   password: string;
 }
 /*
@@ -25,16 +19,11 @@ todo:
 */
 
 export default () => (
-  <Mutation<RegisterMutation, RegisterMutationVariables>
-    mutation={registerMutation}
-  >
+  <Mutation<LoginMutation, LoginMutationVariables> mutation={loginMutation}>
     {mutate => (
       <Formik<FormValues>
         initialValues={{
-          username: "",
-          firstName: "",
-          lastName: "",
-          email: "",
+          usernameOrEmail: "",
           password: ""
         }}
         onSubmit={async (input, { setErrors, setSubmitting }) => {
@@ -45,43 +34,24 @@ export default () => (
           if (
             response &&
             response.data &&
-            response.data.register.errors &&
-            response.data.register.errors.length
+            response.data.login.errors &&
+            response.data.login.errors.length
           ) {
             setSubmitting(false);
-            return setErrors(normalizeErrors(response.data.register.errors));
+            return setErrors(normalizeErrors(response.data.login.errors));
           } else {
-            Router.push("/login");
+            Router.push("/home");
           }
         }}
-        validationSchema={registerSchema}
         validateOnBlur={false}
         validateOnChange={false}
       >
         {({ errors, handleSubmit, isSubmitting }) => (
           <Form onSubmit={handleSubmit}>
             <Field
-              name="username"
-              label="Username"
-              placeholder="Username"
-              component={InputField}
-            />
-            <Field
-              name="firstName"
-              label="First Name"
-              placeholder="First Name"
-              component={InputField}
-            />
-            <Field
-              name="lastName"
-              label="Last Name"
-              placeholder="Last Name"
-              component={InputField}
-            />
-            <Field
-              name="email"
-              label="Email"
-              placeholder="Email"
+              name="usernameOrEmail"
+              label="Email or Username"
+              placeholder="Email or Username"
               component={InputField}
             />
             <Field
@@ -93,7 +63,7 @@ export default () => (
             />
             <ErrorMessage errors={errors} />
             <Button disabled={isSubmitting} type="submit">
-              Create Account
+              Login
             </Button>
           </Form>
         )}
