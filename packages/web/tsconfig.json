@@ -13,6 +13,8 @@
     "noUnusedParameters": true,
     "removeComments": false,
     "preserveConstEnums": true,
-    "sourceMap": true
-  }
+    "sourceMap": true,
+    "composite": true
+  },
+  "references": [{ "path": "../common" }]
 }
