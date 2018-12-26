@@ -22,7 +22,8 @@ function create(initialState?: any) {
     connectToDevTools: isBrowser,
     ssrMode: !isBrowser, // Disables forceFetch on the server (so queries are only run once)
     link: new HttpLink({
-      uri: "http://localhost:4000/graphql"
+      uri: "http://localhost:4000/graphql",
+      credentials: "include"
     }),
     cache: new InMemoryCache().restore(initialState || {})
   });
