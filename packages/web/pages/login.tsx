@@ -42,6 +42,7 @@ export default () => (
               setSubmitting(false);
               return setErrors(normalizeErrors(response.data.login.errors));
             } else {
+              setSubmitting(false);
               Router.push("/home");
             }
           }}

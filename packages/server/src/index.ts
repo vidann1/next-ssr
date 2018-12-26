@@ -31,14 +31,12 @@ const startServer = async () => {
         client: redis as any
         // prefix: redisSessionPrefix
       }),
-      name: "qid",
       secret: SESSION_SECRET,
       resave: false,
       saveUninitialized: false,
       cookie: {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
-        // secure: false,
         maxAge: 1000 * 60 * 60 * 24 * 365 * 7 // 7 days
       }
     })
