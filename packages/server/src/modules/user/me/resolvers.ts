@@ -1,5 +1,5 @@
 import { QueryResolvers } from "../../../types";
-import { User } from "server/src/entity/User";
+import { User } from "../../../entity/User";
 
 const resolvers: QueryResolvers.Resolvers = {
   me: async (_, __, { req }) => {
